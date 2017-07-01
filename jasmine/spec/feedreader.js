@@ -108,7 +108,7 @@ $(function() {
                 first = $('.feed').children().text();
                 done();
                 return first;
-            })
+            });
 
         });
 
