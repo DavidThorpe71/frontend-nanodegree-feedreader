@@ -97,14 +97,13 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        var first;
-        var second;
+        var first,
+            second;
 
         beforeEach(function(done) {
             loadFeed(0, function() {
                 first = $('.feed .entry').text();
                 done();
-                return first;
             });
 
         });
@@ -113,12 +112,9 @@ $(function() {
         it('For each new feed loaded the content changes', function(done) {
             loadFeed(1, function() {
                 second = $('.feed .entry').text();
+                expect(first).not.toEqual(second);
                 done();
-                return second;   
-            });
-
-            expect(first).not.toEqual(second);
-        });
-        
+            });           
+        });       
     });     
 }());
